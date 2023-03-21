@@ -8,7 +8,7 @@ Created on Tue Mar 21 18:29:21 2023
 import requests
 from bs4 import BeautifulSoup
 
-#url = 'https://www.coingecko.com/es'
+url = 'https://www.coingecko.com/es'
 
 def pagina(url):
     
@@ -28,16 +28,18 @@ def pagina(url):
         
         print("NAME: ", name, [ki.text for ki in k1+k2],"\n")
         
-        res.append([name, k1+k2])
+        res.append([name, [ki.text for ki in k1+k2]])
         
     return res
 
     
 
-
-for pag in range(1,113):
-    print("PAGINA: ", pag)
-    url = 'https://www.coingecko.com/es?page='+str(pag)
-    pagina(url)
+# descomenta para scrapear todo
+#for pag in range(1,113):
+#    print("PAGINA: ", pag)
+#    url = 'https://www.coingecko.com/es?page='+str(pag)
+#    pagina(url)
     
 
+# solo la principal
+pagina(url)
